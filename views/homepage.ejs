@@ -207,7 +207,7 @@ span{
                         <div class="table-responsive" style="margin-left: 1%;"><div style="font-family: 'Marck Script', cursive;margin-left: 1%;font-size: 25px;color: rgb(100, 100, 100);">Pinned notes</div>        <br>
                                 <% data.forEach(function(p){ %>
                                         <%if (p.pin=="pin") { %>
-                                                <input id="color" value=<%=p.color%> />
+                                                <!-- <input id="color" value=<%=p.color%> /> -->
                                                 <div style="width:25%;box-shadow: 0 8px 8px 0 rgba(88, 87, 87, 0.2); border: 1px solid rgb(218, 213, 213);border-radius: 12px; margin-left: 1%;margin-right: 1%; overflow: hidden;">
                                                                 <span><b><%=p.title%></b></span><br>
                                        <span><%=p.note%></span><br>
@@ -296,9 +296,9 @@ span{
                         document.getElementById("brush").style.color ="rgb(107, 107, 107)";
                       //  alert( document.getElementById("color-input").value);
                        }
-                       function inps(){
-                               alert(document.getElementById("color"));
-                       }
-                       inps();
+                //        function inps(){
+                //                alert(document.getElementById("color"));
+                //        }
+                //        inps();
                 </script>
     </html>
