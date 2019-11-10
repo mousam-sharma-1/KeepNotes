@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+                    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
+                <link href="https://fonts.googleapis.com/css?family=Marck+Script&display=swap" rel="stylesheet">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+    <title>KEEP NOTES</title>
+</head>
+<style>
+                nav{
+                         background-color: '';
+                     }
+             .form-group-1 {
+                     width: 42%;
+                     margin-left: 25%;
+             }
+             @media screen and (max-width: 600px) {
+                     .form-group{
+                        position: absolute;
+                        top: 20%;
+                        left: 32%;
+                     }
+                     .navbar-right{
+                 position: absolute;
+                  top: 20%;
+                   left: 90%
+             }
+             .form-group-1 {
+                     width: 75%;
+                     margin-left: 13%;
+             }
+             }
+             @media screen and (min-width: 600px) {
+             .form-group-1 {
+                     width: 65%;
+                     margin-left: 15%;
+             }
+             }
+             @media screen and (min-width: 900px) {
+                 .form-group-1 {
+                     width: 42%;
+                     margin-left: 30%;
+             }
+             .navbar-right{
+                 position: absolute;
+                  top: 20%;
+                   left: 94%
+             }
+             }
+
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color:rgb(245, 243, 243);
+  box-shadow: 3px 5px 10px #d3d1d1;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 10px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 17px;
+  color: #747373;
+  display: block;
+  transition: 0.3s;
+}
+#ch{
+  margin-top: 20%;
+}
+
+.sidenav a:hover {
+  color: #e0dddd;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 40px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  /* padding: 16px; */
+}
+
+#q1:hover{
+        cursor: pointer;
+        color: #fcf9f9;    
+}
+#foc:focus{
+        box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+#circ:hover{
+color: black;
+}
+span{
+        margin:5%;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+             </style>
+             
+             <body ng-app="">
+                        <div id="mySidenav" class="sidenav">
+                                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" >&times;</a>
+                                        <a id="ch" href="/"><i class="fa fa-edit" style="font-size:22px"></i>&nbsp&nbsp Task</a>
+                                        <a id="ch" href="#"><i class="fa fa-bell-o" style="font-size:22px"></i>&nbsp&nbsp Reminder</a>
+                                        <a id="ch" href="/#"><i class="fa fa-pencil" style="font-size:22px"></i>&nbsp&nbsp Edit Lables</a>
+                                        <a id="ch" href="/archive"><i class="fa fa-inbox" style="font-size:22px"></i>&nbsp&nbsp Archives</a>
+                                        <a id="ch" href="/delete"><i class="fa fa-trash" style="font-size:22px"></i>&nbsp&nbsp Trash</a>
+                                      </div>
+                     <div id="main">
+                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                                <div id="s6" style="font-size:30px;cursor:pointer;position:absolute;top:20%;color: rgb(141, 139, 139);" onclick="openNav()" title="Main Menu">&#9776;</div>
+                     <a href="#" class="navbar-brand" style="margin-left: 2%;">
+                         &nbsp&nbsp    <img src="favicon.ico" width="35" height="35" alt=""> KEEP<span style="font-family: 'Marck Script', cursive;">notes</span>
+                         </a>
+                       <div class="form-group" style="margin-left: 7%;width: 40%;">
+          <input class="form-control" placeholder="Search.." style="padding: 4%;border:1px solid rgb(211, 208, 208);"></input>
+             </div>
+                     
+             <ul class="navbar-nav">
+                     <li class="nav-item"><a class="navbar-right" href="/logout" title="Logout" style="color: black;"><img src="turn-off.png" width="45%"/></a></li>
+                </ul>
+                 </nav>
+                 <hr><hr>
+                 <form action="/" method="POST">
+                      <center> 
+                                <div id="box" class="form-group" style="border: 1px solid rgb(199, 196, 196);width: 45%;border-radius: 3%;box-shadow: 5px 10px 10px rgb(199, 196, 196);padding: 1%;">
+                        <table>
+                                <td>
+                                <tr><input id="foc" class="form-control b1" name="title" placeholder="Title" style="border: none;"></tr>
+                                </tr> <input id="foc" class="form-control b1" name="note" placeholder="Take a note.." style="border: none;"></tr>
+                        </td>
+                        <br>
+                        <td id="q1">
+                                <input id="Ip1" type="text" name="pin" style="display: none;" value="unpin">
+                                        <i class="fa fa-thumb-tack" id="p1" onclick=pin1() style="font-size:20px;padding: 5%;color: rgb(175, 173, 173);" title="Pin"></i>
+                                        <!-- <input id="Ip2" type="text" style="display: none;"> -->
+                                        <i class="fa fa-thumb-tack" id="p2" onclick=pin2() style="font-size:20px;padding: 5%;color: rgb(61, 61, 61);display: none;" title="Unpin"></i>
+                        </td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                         <td id="q1">
+                                 <input id="file-input" type="file" accept="image/*" name="image" style="display: none;">
+                                        <label for="file-input"> <i class="fa fa-photo" style="font-size:20px;padding: 5%;color:  rgb(107, 107, 107)" title="Add image"></i>
+                                        </label>
+                                        </td>
+                         <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                         <td id="q1">
+                                      <i id="brush" class="fa fa-paint-brush" onmouseover=over() onclick=overout() style="font-size:20px;padding:5%;color:  rgb(107, 107, 107)" title="Change colour"></i>
+                                     
+                                        </td>
+                                        <td> <div id="col" onclick=overout() style="box-shadow: 1px 2px 5px gray;display: none;">
+                                                <input id="color-input" style="display: none;" name="color" value="white">        
+                                        <i id="circ" onclick=color() class="fa fa-circle" style="font-size:20px;color:  rgba(240, 15, 15, 0.582);cursor: pointer;padding: 2%;" title="Red"></i>
+                                        
+                                        <i id="circ" onclick=color2() class="fa fa-circle" style="font-size:20px;color:rgba(76, 113, 235, 0.712);cursor: pointer;padding: 2%;" title="Blue"></i>
+                                                     <br>   
+                                        <i id="circ" onclick=color3() class="fa fa-circle" style="font-size:20px;color:  rgba(49, 212, 111, 0.74);cursor: pointer;padding: 2%;" title="Green"></i>
+                                                        
+                                        <i id="circ" onclick=color4() class="fa fa-circle" style="font-size:20px;color:  rgba(182, 212, 49, 0.705);cursor: pointer;padding: 2%;" title="Yellow"></i>
+                                                        
+                                        <i id="circ" onclick=color5() class="fa fa-ban" style="font-size:20px;color:  rgb(70, 68, 68);cursor: pointer;padding: 2%;" title="No color"></i> 
+                                                                                
+                                              </div></td>
+                                              <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                                              <td>
+                                                        &nbsp  <input type="submit" class="btn btn-primary" value="Add">
+                                                        <!-- &nbsp  <input onclick=inps() type="submit" class="btn btn-primary" value="Add"> -->
+                                                </td>
+                        </table>
+                                </div></center>
+                        
+                 </form>
+                 <br>
+                 <hr><%if (message) { %>
+                        <center>
+                                        <i><h2 style="color: rgb(197, 195, 195);padding-top: 10%;"><%=message%></h2></i>
+                        </center>
+                        <% } %>
+               
+                        <%if (data) { %>
+                        <div class="table-responsive" style="margin-left: 1%;"><div style="font-family: 'Marck Script', cursive;margin-left: 1%;font-size: 25px;color: rgb(100, 100, 100);">Pinned notes</div>        <br>
+                                <% data.forEach(function(p){ %>
+                                        <%if (p.pin=="pin") { %>
+                                                <div style="width:25%;box-shadow: 0 8px 8px 0 rgba(88, 87, 87, 0.2); border: 1px solid rgb(218, 213, 213);border-radius: 12px; margin-left: 1%;margin-right: 1%; overflow: hidden;">
+                                                                <span><b><%=p.title%></b></span><br>
+                                       <span><%=p.note%></span><br>
+                                       <span><a href="/pin/<%=p._id%>"><i class="fa fa-thumb-tack" style="font-size:25px; color: rgb(58, 57, 57);padding: 2%;" title="unpin"></i></a></span><span><td><a href="/delete/<%=p._id%>"><i class="fa fa-trash" style="font-size:25px; color: rgb(199, 48, 48);padding: 2%;" title="Delete"></i></a></span><span><a href="/archive/<%=p._id%>"><i class="fa fa-inbox" style="font-size:25px; color: rgb(145, 142, 142);padding: 2%;" title="Archive"></i></a></span>
+                                      
+                                              </div><br>
+                                              <% } %>
+                                                <% }) %>
+                                                
+                        </div>
+<hr><br>
+
+                <div class="table-responsive" style="margin-left: 1%;"><div style="font-family: 'Marck Script', cursive;margin-left: 1%;font-size: 25px;color: rgb(100, 100, 100);">Other notes</div>  <br>
+                        <% data.forEach(function(p){ %>
+                                <%if (p.pin=="unpin") { %>
+                                        <div style="width:25%;box-shadow: 0 8px 8px 0 rgba(88, 87, 87, 0.2); border: 1px solid rgb(218, 213, 213);border-radius: 12px; margin-left: 1%;margin-right: 1%; overflow: hidden;">
+                                       <span><b><%=p.title%></b></span><br>
+                                       <span><%=p.note%></span><br>
+                                       <span><a href="/pin/<%=p._id%>"><i class="fa fa-thumb-tack" style="font-size:25px; color: rgb(145, 142, 142);padding: 2%;" title="pin"></i></a></span><span><td><a href="/delete/<%=p._id%>"><i class="fa fa-trash" style="font-size:25px; color: rgb(199, 48, 48);padding: 2%;" title="Delete"></i></a></span><span><a href="/archive/<%=p._id%>"><i class="fa fa-inbox" style="font-size:25px; color: rgb(145, 142, 142);padding: 2%;" title="Archive"></i></a></span>
+                                                <!-- <table>
+                                                        <tr style="background-color: rgba(240, 239, 239, 0.63);"><td style="padding: 1%"><b><%=p.title%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b></td><td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td><td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td></tr>
+                                                        <tr><td style="padding: 0.5%"><%=p.note%></td></tr>
+                                                        <tr><td style="padding-left:1%"><a href="/pin/<%=p._id%>"><i class="fa fa-thumb-tack" style="font-size:25px; color: rgb(145, 142, 142);padding: 2%;" title="pin"></i></a></td><td><a href="/delete/<%=p._id%>"><i class="fa fa-trash" style="font-size:25px; color: rgb(199, 48, 48);padding: 2%;" title="Delete"></i></a></td><td style="padding-left:1%"><a href="/archive/<%=p._id%>"><i class="fa fa-inbox" style="font-size:25px; color: rgb(145, 142, 142);padding: 2%;" title="Archive"></i></a></td></tr>
+                                                        
+                                        </table> -->
+                                      </div><br>
+                                      <% } %>
+                                        <% }) %>
+                                    
+                </div>
+                <% } %>
+                        
+        </div>
+</body>
+<script>
+                openNav();
+                function openNav() {
+                  document.getElementById("mySidenav").style.width = "250px";
+                  document.getElementById("main").style.marginLeft = "250px";
+                  document.getElementById("s6").style.display = "none";
+                }
+                
+                function closeNav() {
+                  document.getElementById("mySidenav").style.width = "0";
+                  document.getElementById("main").style.marginLeft= "0";
+                  document.getElementById("s6").style.display = "block";
+                }
+                function pin1(){
+                        document.getElementById("p1").style.display = "none";
+                        document.getElementById("Ip1").value="pin";
+                        document.getElementById("p2").style.display = "block";
+                }
+                function pin2(){
+                        document.getElementById("p2").style.display = "none";
+                        document.getElementById("Ip1").value="unpin";
+                        document.getElementById("p1").style.display = "block";
+                }
+                function over(){
+                        document.getElementById("col").style.display = "block";
+                }
+                function overout(){
+                        document.getElementById("col").style.display = "none";
+                }
+                function color(){
+                        document.getElementById("color-input").value="rgba(240, 15, 15, 0.582)";
+                        document.getElementById("brush").style.color = document.getElementById("color-input").value;
+                      //  alert( document.getElementById("color-input").value);
+                       }
+                       function color2(){
+                        document.getElementById("color-input").value="rgba(76, 113, 235, 0.712)";
+                        document.getElementById("brush").style.color = document.getElementById("color-input").value;
+                      //  alert( document.getElementById("color-input").value);
+                       }
+                       function color3(){
+                        document.getElementById("color-input").value=" rgba(49, 212, 111, 0.74)";
+                        document.getElementById("brush").style.color = document.getElementById("color-input").value;
+                    //    alert( document.getElementById("color-input").value);
+                       }
+                       function color4(){
+                        document.getElementById("color-input").value="rgba(182, 212, 49, 0.705)";
+                        document.getElementById("brush").style.color = document.getElementById("color-input").value;
+                     //   alert( document.getElementById("color-input").value);
+                       }
+                       function color5(){
+                        document.getElementById("color-input").value="white";
+                        document.getElementById("brush").style.color ="rgb(107, 107, 107)";
+                      //  alert( document.getElementById("color-input").value);
+                       }
+                       function inps(){
+                               alert(document.getElementById("Ip1").value+" - "+document.getElementById("color-input").value);
+                       }
+                </script>
+    </html>
